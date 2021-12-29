@@ -1,9 +1,9 @@
-import { readFileSync } from 'fs'
+import { parseStrings } from '../utils'
 
 type direction = 'forward' | 'down' | 'up'
 
 export function day2(): void {
-  const input = parseInput('./files/day2.txt')
+  const input = parseStrings('./files/day2.txt')
 
   console.log('--DAY 2--')
   console.log(`Part 1: ${part1(input)}`)
@@ -48,8 +48,4 @@ function applyCommands(
 function parseCommand(command: string): [direction, number] {
   const parts = command.split(' ')
   return [parts[0] as direction, parseInt(parts[1])]
-}
-
-export function parseInput(inputFile: string): string[] {
-  return readFileSync(inputFile, 'utf-8').split('\n')
 }

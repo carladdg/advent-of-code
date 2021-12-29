@@ -1,7 +1,7 @@
-import { readFileSync } from 'fs'
+import { parseNumbers } from '../utils'
 
 export function day1(): void {
-  const input = parseInput('./files/day1.txt')
+  const input = parseNumbers('./files/day1.txt')
 
   console.log('--DAY 1--')
   console.log(`Part 1: ${part1(input)}`)
@@ -30,17 +30,11 @@ function countIncreasingValues(values: number[]) {
   return count
 }
 
-function convertToSlidingWindows(input: number[]): number[] {
-  return input.reduce((windows: number[], _, i) => {
-    if (i + 2 < input.length) {
-      windows.push(input[i] + input[i + 1] + input[i + 2])
+function convertToSlidingWindows(values: number[]): number[] {
+  return values.reduce((windows: number[], _, i) => {
+    if (i + 2 < values.length) {
+      windows.push(values[i] + values[i + 1] + values[i + 2])
     }
     return windows
   }, [])
-}
-
-export function parseInput(inputFile: string): number[] {
-  return readFileSync(inputFile, 'utf-8')
-    .split('\n')
-    .map((e) => parseInt(e))
 }

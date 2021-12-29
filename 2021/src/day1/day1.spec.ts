@@ -1,7 +1,8 @@
-import { part1, part2, parseInput } from './day1'
+import { parseNumbers } from '../utils'
+import { part1, part2 } from './day1'
 
 describe('day1', () => {
-  const input = parseInput('./files/day1-test.txt')
+  const input = parseNumbers('./files/day1-test.txt')
 
   it('counts the number of individual depth measurement increases', () => {
     expect(part1(input)).toEqual(7)
